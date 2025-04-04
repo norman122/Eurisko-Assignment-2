@@ -5,7 +5,7 @@ type UserProps = {
         firstName: string;
         lastName: string;
         email: string;
-        status: 'active' | 'locked';
+        status: string;
         dob: string;
     }
 };
