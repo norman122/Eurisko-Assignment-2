@@ -14,7 +14,7 @@ const UserCard: React.FC<UserProps> = ({ user }) => {
   return (
     <div className="bg-white p-4 rounded shadow-md ">
       <div className="flex items-center justify-center mb-4 ">
-        <div className="rounded-full text-white w-12 h-12 flex items-center justify-center text-xl" style={{backgroundColor: '#3251D0'}}>
+        <div className="rounded-full text-white w-12 h-12 flex items-center justify-center text-xl bg-primary">
           {`${user.firstName && user.firstName[0].toUpperCase()}${user.lastName && user.lastName[0].toUpperCase()}`}
         </div>
       </div>
@@ -25,8 +25,8 @@ const UserCard: React.FC<UserProps> = ({ user }) => {
         <p className="text-gray-500 text-sm">Date of Birth: {user.dob}</p>
       </div>
       <div className="flex justify-end mt-4 ">
-        <button className="text-white border rounded px-4 py-2 mr-2" style={{backgroundColor: '#3251D0', borderColor: '#3251D0'}}>Edit</button>
-        <button className="text-white border bg-red-500 rounded px-4 py-2" style={{borderColor: '#ff0000'}}>Delete</button>
+        <button className="text-white border-primary bg-primary rounded px-4 py-2 mr-2 cursor-pointer">Edit</button>
+        <button className="text-white border-red-500 bg-red-500 rounded px-4 py-2 cursor-pointer">Delete</button>
       </div>
     </div>
   );
