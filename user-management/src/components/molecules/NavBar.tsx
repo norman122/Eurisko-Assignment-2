@@ -1,5 +1,5 @@
 import { Moon } from "lucide-react";
-import { useAuthStore } from "../../store";
+import { useAuthStore } from "../../store/authentication";
 
 const NavBar = () => {
   return (

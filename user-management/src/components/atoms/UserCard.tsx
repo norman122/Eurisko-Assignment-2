@@ -1,16 +1,15 @@
 import React from 'react';
 
-type UserProps = {
-    user: {
-        firstName: string;
-        lastName: string;
-        email: string;
-        status: string;
-        dob: string;
-    }
+type User = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  status: string;
+  dob: string;
 };
 
-const UserCard: React.FC<UserProps> = ({ user }) => {
+const UserCard: React.FC<{ user: User }> = ({ user }) => {
   return (
     <div className="bg-white p-4 rounded shadow-md ">
       <div className="flex items-center justify-center mb-4 ">

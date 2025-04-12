@@ -2,7 +2,7 @@ import { FormEvent, useState } from 'react';
 import Button from '../atoms/Button';
 import Input from '../atoms/Input';
 import { Eye, EyeOff } from 'lucide-react';
-import { useAuthStore } from '../../store';
+import { useAuthStore } from '../../store/authentication';
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState<string>('');
