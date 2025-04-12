@@ -3,6 +3,7 @@ import Button from '../atoms/Button';
 import Input from '../atoms/Input';
 import { Eye, EyeOff } from 'lucide-react';
 import { useAuthStore } from '../../store/authentication';
+import { useThemeStore } from '../../store/theme';
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState<string>('');
@@ -10,6 +11,7 @@ const Login: React.FC = () => {
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
+    const { darkMode } = useThemeStore();
 
     const setToken = useAuthStore((state) => state.setToken);
 
@@ -47,19 +49,19 @@ const Login: React.FC = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <div className={`flex items-center justify-center min-h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-100'}`}>
             <form
                 onSubmit={handleLogin}
-                className="w-full max-w-xs bg-white rounded-xl shadow-lg p-8 space-y-4"
+                className={`w-full max-w-xs rounded-xl shadow-lg p-8 space-y-4 ${darkMode ? 'bg-gray-700' : 'bg-white'}`}
             >
-                <h1 className="text-xl font-semibold text-center">Login</h1>
+                <h1 className={`text-xl font-semibold text-center ${darkMode ? 'text-white' : 'text-black'}`}>Login</h1>
 
                 {error && (
-                    <p className="text-sm text-red-500 text-center">{error}</p>
+                    <p className={`text-sm text-center ${darkMode ? 'text-red-300' : 'text-red-500'}`}>{error}</p>
                 )}
 
                 <div>
-                    <label htmlFor="email" className="block text-xs font-medium text-gray-500">
+                    <label htmlFor="email" className={`block text-xs font-medium ${darkMode ? 'text-gray-300' : 'text-gray-500'}`}>
                         Email
                     </label>
                     <Input
@@ -72,7 +74,7 @@ const Login: React.FC = () => {
                 </div>
 
                 <div>
-                    <label htmlFor="password" className="block text-xs font-medium text-gray-500">
+                    <label htmlFor="password" className={`block text-xs font-medium ${darkMode ? 'text-gray-300' : 'text-gray-500'}`}>
                         Password
                     </label>
                     <div className="relative">
@@ -89,9 +91,9 @@ const Login: React.FC = () => {
                             onClick={() => setShowPassword(!showPassword)}
                         >
                             {showPassword ? (
-                                <EyeOff size={20} className="text-gray-500" />
+                                <EyeOff size={20} className={`${darkMode ? 'text-gray-300' : 'text-gray-500'}`} />
                             ) : (
-                                <Eye size={20} className="text-gray-500" />
+                                <Eye size={20} className={`${darkMode ? 'text-gray-300' : 'text-gray-500'}`} />
                             )}
                         </button>
                     </div>
@@ -100,7 +102,7 @@ const Login: React.FC = () => {
                 <div className="flex justify-center">
                     <Button
                         type="submit"
-                        className="w-auto text-white font-bold py-2 px-4 rounded bg-primary cursor-pointer"
+                        className={`w-auto font-bold py-2 px-4 rounded cursor-pointer ${darkMode ? 'text-white bg-primary-dark'   : 'text-white bg-primary'}`}
                         disabled={isLoading}
                     >
                         {isLoading ? 'Loading...' : 'Login'}

@@ -2,5 +2,10 @@
 
 @theme{
     --color-primary: #3251D0;
-    --color-primary-dark: #263D9C
+    --color-primary-dark: #263D9C;
+    --color-background: initial;
+}
+
+body {
+    background-color: var(--color-background);
 }
