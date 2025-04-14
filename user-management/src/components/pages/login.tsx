@@ -32,14 +32,16 @@ const Login: React.FC = () => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ body: { email, password } }),
+                body: JSON.stringify({ email, password }),
             });
               
             const data = await response.json();
-            const { accessToken, expiresIn } = data.result.data;
-            setToken(accessToken, expiresIn);
-            if(accessToken === undefined)
-                setError("Invalid credentials");
+            if (data.status === 200) {
+                const { accessToken, expiresIn } = data.result.data;
+                setToken(accessToken, expiresIn);
+            } else {
+                setError(data.result.message);
+            }
 
         } catch (error: any) {
             setError(error.message);
