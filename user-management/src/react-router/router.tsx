@@ -10,6 +10,8 @@ import NotFound from "../components/pages/not-found.tsx";
 import Login from "../components/pages/login.tsx"
 import AuthRoute from "./AuthRoute.tsx";
 import ProtectedRoute from "./ProtectedRoute.tsx";
+import NewUser from "../components/pages/newUser.tsx";
+import EditUser from "../components/pages/editUser.tsx";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -20,6 +22,14 @@ const router = createBrowserRouter(
 
             <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
                 <Route path="dashboard" element={<TailwindCss />} />
+            </Route>
+
+            <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
+                <Route path="dashboard/new" element={<NewUser/>} />
+            </Route>
+
+            <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
+                <Route path="dashboard/edit/:id" element={<EditUser/>} />
             </Route>
 
             <Route path="/*" element={<NotFound />} />

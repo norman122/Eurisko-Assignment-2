@@ -10,7 +10,10 @@ const NavBar = () => {
       <div className="flex justify-between items-center w-full">
         <h1 className="text-sm md:text-lg font-bold">User Management</h1>  
         <div className="flex gap-2 items-center">
-          <button className={`${darkMode ? 'bg-black' : 'bg-white'} px-3 py-1 md:px-4 md:py-2 rounded text-xs md:text-base ${darkMode ? 'text-white' : 'text-primary'}  cursor-pointer`}>
+          <button 
+            className={`${darkMode ? 'bg-black' : 'bg-white'} px-3 py-1 md:px-4 md:py-2 rounded text-xs md:text-base ${darkMode ? 'text-white' : 'text-primary'}  cursor-pointer`}
+            onClick={() => window.location.href='/dashboard/new'}
+          >
             Create User
           </button>
           <button className={`${darkMode ? 'bg-red-700' : 'bg-red-500'} text-white px-3 py-1 md:px-4 md:py-2 rounded text-xs md:text-base cursor-pointer`} onClick={useAuthStore.getState().clearToken}>
