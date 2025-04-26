@@ -24,7 +24,7 @@ const EditUser: React.FC = () => {
     queryKey: ['user', id],
     queryFn: async () => {
       const response = await getUserById(Number(id), token!);
-      return response.result.data.user as User; // Adjust based on the new API response
+      return response.result.data.user as User;
     },
     enabled: !!id,
   });
@@ -46,7 +46,6 @@ const EditUser: React.FC = () => {
 
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = formMethods;
 
-  // Reset form when user data is available
   React.useEffect(() => {
     if (user) {
       reset({
